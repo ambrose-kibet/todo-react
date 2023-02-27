@@ -22,7 +22,13 @@ const TodoItem = ({ id, item, completed }) => {
           checked={completed}
           onChange={() => toggleComplete(id)}
         />
-        <p className="todo-item">{item}</p>
+        {completed ? (
+          <p className="todo-item">
+            <s>{item}</s>
+          </p>
+        ) : (
+          <p className="todo-item">{item}</p>
+        )}
         <div className="btns-container">
           <button
             className="btn"
