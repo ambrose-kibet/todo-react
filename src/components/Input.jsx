@@ -3,7 +3,7 @@ import { FaPlusCircle } from 'react-icons/fa';
 import { useAppContext } from '../AppContext';
 
 const Input = () => {
-  const { addItem, createAlert } = useAppContext();
+  const { addItem, createAlert, showAlert } = useAppContext();
   const [todoValue, setTodoValue] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,6 +13,7 @@ const Input = () => {
     }
     const Id = new Date().getTime();
     addItem(Id, todoValue);
+    setTodoValue('');
   };
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
@@ -25,6 +26,9 @@ const Input = () => {
       <button type="submit">
         <FaPlusCircle />
       </button>
+      {showAlert.show && (
+        <p className={showAlert.alertStatus}>{showAlert.message}</p>
+      )}
     </form>
   );
 };

@@ -7,7 +7,7 @@ const AppContext = ({ children }) => {
   const [showAlert, setshowAlert] = useState({
     show: false,
     message: '',
-    alertStatus: '',
+    alertStatus: 'hide',
   });
   const addItem = (id, item) => {
     settodoItems((oldItems) => [...oldItems, { id, item, completed: false }]);
@@ -37,8 +37,15 @@ const AppContext = ({ children }) => {
       }),
     );
   };
-  const createAlert = (show = false, message = '', alertStatus = '') => {
+  const createAlert = (show = false, message = '', alertStatus) => {
     setshowAlert({ show, message, alertStatus });
+    setTimeout(() => {
+      setshowAlert({
+        show: false,
+        message: '',
+        alertStatus: 'hide',
+      });
+    }, 3000);
   };
 
   return (

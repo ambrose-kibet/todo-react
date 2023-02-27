@@ -52,3 +52,15 @@ small,
 .text_small {
   font-size: 0.8rem;
 }
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+.danger {
+  color: red;
+}
