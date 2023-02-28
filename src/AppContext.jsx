@@ -1,9 +1,18 @@
-import { useContext, createContext, useState } from 'react';
+import {
+  useContext, createContext, useState, useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 
 const AppProvider = createContext();
+const getLocalStorage = () => {
+  let todos = [];
+  if (localStorage.getItem('todoItems')) {
+    todos = JSON.parse(localStorage.getItem('todoItems'));
+  }
+  return todos;
+};
 const AppContext = ({ children }) => {
-  const [todoItems, settodoItems] = useState([]);
+  const [todoItems, settodoItems] = useState(getLocalStorage());
   const [showAlert, setshowAlert] = useState({
     show: false,
     message: '',
@@ -47,6 +56,14 @@ const AppContext = ({ children }) => {
       });
     }, 3000);
   };
+  const setLocalStorage = () => {
+    localStorage.setItem('todoItems', JSON.stringify(todoItems));
+  };
+
+  useEffect(() => {
+    setLocalStorage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [todoItems]);
 
   return (
     <AppProvider.Provider

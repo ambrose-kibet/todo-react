@@ -16,10 +16,10 @@ const Input = () => {
     setTodoValue('');
   };
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={(e) => handleSubmit(e)} className="input-form">
       <input
         type="text"
-        className="form-input"
+        className="form-input-variant"
         value={todoValue}
         onChange={(e) => setTodoValue(e.target.value)}
       />

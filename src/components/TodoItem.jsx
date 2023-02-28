@@ -23,11 +23,11 @@ const TodoItem = ({ id, item, completed }) => {
           onChange={() => toggleComplete(id)}
         />
         {completed ? (
-          <p className="todo-item">
+          <p className="todo-text">
             <s>{item}</s>
           </p>
         ) : (
-          <p className="todo-item">{item}</p>
+          <p className="todo-text">{item}</p>
         )}
         <div className="btns-container">
           <button
@@ -49,6 +49,7 @@ const TodoItem = ({ id, item, completed }) => {
         <input
           type="text"
           value={editValue}
+          className="form-input"
           onChange={(e) => seteditValue(e.target.value)}
         />
       </form>
