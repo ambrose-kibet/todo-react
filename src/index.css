@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Sen:400|Red+Hat+Mono:400');
 
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   font-size: 100%;
 } /* 16px */
@@ -51,4 +59,16 @@ h5 {
 small,
 .text_small {
   font-size: 0.8rem;
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+.danger {
+  color: red;
 }
